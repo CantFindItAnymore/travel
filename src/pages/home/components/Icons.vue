@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <!-- slides -->
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div
@@ -23,6 +23,8 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      swiperOption: {
+      },
       iconList: [
         {
           id: 1,
@@ -119,8 +121,8 @@ export default {
       .icon-desc
         position: absolute
         bottom: 0
-        left: 0
-        right: 0
+        left: .2rem
+        right: .2rem
         height: .44rem
         line-height: .44rem
         color: $darkTextColor
