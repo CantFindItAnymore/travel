@@ -19,23 +19,8 @@
 <script>
 export default {
   name: 'HomeRecommend',
-  data () {
-    return {
-      recommendList: [
-        {
-          id: 1,
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg',
-          title: '金海湖风景区',
-          desc: '1290条评论'
-        },
-        {
-          id: 2,
-          imgUrl: 'http://img1.qunarzz.com/sight/p0/1609/7a/7ae8ee7831836095a3.water.jpg',
-          title: '金海湖风景区',
-          desc: '1290条评论'
-        }
-      ]
-    }
+  props: {
+    recommendList: Array
   }
 }
 </script>
@@ -52,8 +37,8 @@ export default {
     position: relative
     display: flex
     .recommend-item-img
-      width: 1.7rem
-      height: 1.7rem
+      width: 2rem
+      height: 2rem
       padding: .1rem .1rem 0 .1rem
     .recommend-item-info
       flex: 1

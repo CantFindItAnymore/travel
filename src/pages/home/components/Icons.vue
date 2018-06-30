@@ -9,7 +9,7 @@
           :key="item.id"
         >
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.iconUrl"/>
+            <img class="icon-img-content" :src="item.imgUrl"/>
           </div>
           <p class="icon-desc">{{item.desc}}</p>
         </div>
@@ -24,55 +24,11 @@ export default {
   data () {
     return {
       swiperOption: {
-      },
-      iconList: [
-        {
-          id: 1,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/95/f3dd6c383aeb3b02.png',
-          desc: '景点门票'
-        },
-        {
-          id: 2,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/3e/86314b2af03b7502.png',
-          desc: '水上乐园'
-        },
-        {
-          id: 3,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1804/ff/fdf170ee89594b02.png',
-          desc: '必游榜单'
-        },
-        {
-          id: 4,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1804/95/8d02011d149bdb02.png',
-          desc: '成都定制游'
-        },
-        {
-          id: 5,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/97/02f5043b51b2102.png',
-          desc: '情迷九寨'
-        },
-        {
-          id: 6,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/6c/9e54a8540fee0102.png',
-          desc: '故宫'
-        },
-        {
-          id: 7,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/47/c2b659e048b11602.png',
-          desc: '主题乐园'
-        },
-        {
-          id: 8,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1803/6a/45f595250c73d102.png',
-          desc: '夏日玩水'
-        },
-        {
-          id: 9,
-          iconUrl: 'http://img1.qunarzz.com/piao/fusion/1804/5a/13ceb38dcf262f02.png',
-          desc: '一日游'
-        }
-      ]
+      }
     }
+  },
+  props: {
+    iconList: Array
   },
   // 将一维数组转换为二维数组
   computed: {
@@ -115,7 +71,8 @@ export default {
         top: 0
         bottom: .44rem
         .icon-img-content
-          height: 100%
+          padding-top: 14%
+          height: 80%
           display: block
           margin: 0 auto
       .icon-desc
