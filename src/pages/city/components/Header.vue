@@ -23,6 +23,7 @@ export default {
     text-align: center
     background: $bgColor
     position: relative
+    font-size: .32rem
     .header-left
       position: absolute
       top: 0

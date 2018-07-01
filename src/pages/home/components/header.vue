@@ -50,7 +50,7 @@ export default {
       width: 1.24rem
       float: right
       text-align: center
-      color: #eee
+      color: #fff
       .arrow_icon
         font-size: .2rem
 </style>
