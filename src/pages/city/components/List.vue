@@ -1,6 +1,7 @@
 <template>
   <div class="list" ref="list">
     <div>
+      <!-- 当前城市 -->
       <div class="area">
         <div class="title border-topbottom">
           当前城市
@@ -28,96 +29,37 @@
           </div>
         </div>
       </div>
+      <!-- 热门城市 -->
       <div class="area">
         <div class="title border-topbottom">
           热门城市
         </div>
         <div class="button-list">
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
+          <div
+            class="button-wrapper"
+            v-for="item of this.hotCity"
+            :key="item.id"
+          >
+            <div class="button">{{item.name}}</div>
           </div>
         </div>
       </div>
-      <div class="area">
+      <!-- 所有城市列表 -->
+      <div
+        class="area"
+        v-for="(item, key) of this.city"
+        :key="item.key"
+      >
         <div class="title border-topbottom">
-          A
+          {{key}}
         </div>
         <div class="city-list">
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">
-          A
-        </div>
-        <div class="city-list">
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-        </div>
-      </div>
-      <div class="area">
-        <div class="title border-topbottom">
-          A
-        </div>
-        <div class="city-list">
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
-          </div>
-          <div class="city border-bottom">
-            风电场
+          <div
+            class="city border-bottom"
+            v-for="member of item"
+            :key="member.id"
+          >
+            {{member.name}}
           </div>
         </div>
       </div>
@@ -129,6 +71,10 @@
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  props: {
+    city: Object,
+    hotCity: Array
+  },
   mounted () {
     this.scroll = new Bscroll(this.$refs.list)
   }
