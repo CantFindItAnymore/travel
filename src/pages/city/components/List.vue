@@ -9,22 +9,7 @@
         <div class="button-list">
           <div class="button-wrapper">
             <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
-            </div>
-          </div>
-          <div class="button-wrapper">
-            <div class="button">
-              沉睡谷
+              {{this.currentCity}}
             </div>
           </div>
         </div>
@@ -39,6 +24,7 @@
             class="button-wrapper"
             v-for="item of this.hotCity"
             :key="item.id"
+            @click="handleClickCityChange(item.name)"
           >
             <div class="button">{{item.name}}</div>
           </div>
@@ -59,6 +45,7 @@
             class="city border-bottom"
             v-for="member of item"
             :key="member.id"
+            @click="handleClickCityChange(member.name)"
           >
             {{member.name}}
           </div>
@@ -69,6 +56,7 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
@@ -80,12 +68,21 @@ export default {
   mounted () {
     this.scroll = new Bscroll(this.$refs.list)
   },
+  computed: {
+    ...mapState({currentCity: 'city'})
+  },
   watch: {
     letter () {
       if (this.letter) {
         const element = this.$refs[this.letter][0]
         this.scroll.scrollToElement(element)
       }
+    }
+  },
+  methods: {
+    handleClickCityChange (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
     }
   }
 }
