@@ -91,7 +91,7 @@ export default {
     }
   },
   activated () {
-    this.scroll.refresh
+    this.scroll.refresh()
   }
 }
 </script>
