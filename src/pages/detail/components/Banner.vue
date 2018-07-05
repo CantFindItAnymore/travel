@@ -15,20 +15,24 @@
           </div>
         </div>
     </div>
-    <CommonGallary
-      :gallaryImgs="gallaryImgs"
-      v-show="swiperShow"
-      @hideGallary = "hideGallary"
-    />
+    <CommonFade>
+      <CommonGallary
+        :gallaryImgs="gallaryImgs"
+        v-show="swiperShow"
+        @hideGallary = "hideGallary"
+      />
+    </CommonFade>
   </div>
 </template>
 
 <script>
 import CommonGallary from 'common/gallary/Gallary'
+import CommonFade from 'common/fade/Fade'
 export default {
   name: 'DetailBanner',
   components: {
-    CommonGallary
+    CommonGallary,
+    CommonFade
   },
   props: {
     sightName: String,
