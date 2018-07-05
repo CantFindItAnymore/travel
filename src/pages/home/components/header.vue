@@ -1,16 +1,16 @@
 <template>
   <div class="header">
-    <div class="header_left">
+    <div class="header-left">
       <span class="iconfont">&#xe697;</span>
     </div>
-    <div class="header_input">
-      <span class="iconfont">&#xe693;</span>
-      输入城市/景点/游玩主题
+    <div class="header-input-wrapper">
+      <span class="iconfont header-input-icon">&#xe693;</span>
+      <input type="text" class="header-input" placeholder="输入城市/景点/游玩主题" />
     </div>
     <router-link to="/city">
-      <div class="header_right">
+      <div class="header-right">
       {{this.city}}
-      <span class="iconfont arrow_icon">&#xe6dc;</span>
+      <span class="iconfont arrow-icon">&#xe6dc;</span>
       </div>
     </router-link>
   </div>
@@ -33,26 +33,34 @@ export default {
     color: white
     display: flex
     line-height: .86rem
-    .header_left
+    .header-left
       width: .64rem
       float: left
       text-align: center
-    .header_input
+    .header-input-wrapper
       flex: 1
       color: #B6B8BB
+      overflow: hidden
       padding-left: .2rem
+      padding-right: .2rem
       height:.64rem
       line-height: .64rem
       background-color: white
       border-radius: .1rem
       margin-top: .12rem
       margin-left: .1rem
-    .header_right
+      .header-input
+        height: .64rem
+        background-color: white
+        position: relative
+        left: .2rem
+        width: 90%
+    .header-right
       min-width: 1.04rem
       padding: 0 .1rem
       float: right
       text-align: center
       color: #fff
-      .arrow_icon
+      .arrow-icon
         font-size: .2rem
 </style>

@@ -60,13 +60,18 @@ import {mapState} from 'vuex'
 import Bscroll from 'better-scroll'
 export default {
   name: 'CityList',
+  data () {
+    return {
+      scrollOption: {click: true}
+    }
+  },
   props: {
     city: Object,
     hotCity: Array,
     letter: String
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.list)
+    this.scroll = new Bscroll(this.$refs.list, this.scrollOption)
   },
   computed: {
     ...mapState({currentCity: 'city'})
@@ -84,6 +89,9 @@ export default {
       this.$store.dispatch('changeCity', city)
       this.$router.push('/')
     }
+  },
+  activated () {
+    this.scroll.refresh
   }
 }
 </script>
