@@ -1,14 +1,20 @@
 <template>
   <div>
     <DetailHeader/>
-    <DetailBanner/>
+    <DetailBanner
+      :sightName="sightName"
+      :bannerImg="bannerImg"
+      :gallaryImgs="gallaryImgs"
+    />
     <div class="conte">
-      <DetailList :list="list"/>
+      <DetailList
+        :categoryList="categoryList"/>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import DetailBanner from './components/Banner'
 import DetailHeader from './components/Header'
 import DetailList from './components/List'
@@ -21,36 +27,37 @@ export default {
   },
   data () {
     return {
-      list: [
-        {
-          title: '成人票',
-          children: [
-            {
-              title: '成人票11111',
-              children: [
-                {title: '成人票11111----1111'},
-                {title: '成人票11111----2222'},
-                {title: '成人票11111----3333'}
-              ]
-            },
-            {
-              title: '成人票22222'
-            },
-            {
-              title: '成人票33333'
-            }
-          ]
-        },
-        {
-          title: '儿童票'
-        },
-        {
-          title: '特惠票'
-        },
-        {
-          title: '学生票'
+      lastListId: '',
+      currentListId: this.$route.params.id,
+      sightName: '',
+      bannerImg: '',
+      gallaryImgs: [],
+      categoryList: []
+    }
+  },
+  methods: {
+    getDetailInfo () {
+      axios.get('/api/detail.json', {
+        params: {
+          id: this.$route.params.id
         }
-      ]
+      })
+        .then(this.getDetailInfoSucc)
+    },
+    getDetailInfoSucc (res) {
+      res = res.data
+      if (res.ret === true && res.data) {
+        this.sightName = res.data.sightName
+        this.bannerImg = res.data.bannerImg
+        this.gallaryImgs = res.data.gallaryImgs
+        this.categoryList = res.data.categoryList
+      }
+    }
+  },
+  activated () {
+    if (this.lastListId !== this.$route.params.id) {
+      this.lastListId = this.$route.params.id
+      this.getDetailInfo()
     }
   }
 }

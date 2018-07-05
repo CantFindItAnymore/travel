@@ -4,7 +4,7 @@
       <swiper :options="swiperOption">
         <!-- slides -->
         <swiper-slide
-          v-for="(item, index) of this.imgs"
+          v-for="(item, index) of this.gallaryImgs"
           :key="index"
         >
           <img class="swiper-img" :src="item"/>
@@ -31,7 +31,7 @@ export default {
     }
   },
   props: {
-    imgs: Array
+    gallaryImgs: Array
   },
   methods: {
     handleClick () {
@@ -60,7 +60,7 @@ export default {
       background: $bgColor
       width: 100%
       height: 0
-      padding-bottom: 55%
+      padding-bottom: 100%
       .swiper-img
         width: 100%
       .swiper-pagination

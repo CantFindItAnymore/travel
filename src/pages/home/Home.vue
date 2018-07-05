@@ -52,9 +52,6 @@ export default {
       }
     }
   },
-  mounted () {
-    this.lastCity = this.city
-  },
   activated () {
     if (this.lastCity !== this.currentCity) {
       this.lastCity = this.currentCity

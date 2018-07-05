@@ -1,11 +1,13 @@
 <template>
   <div>
     <div class="banner" @click="showGallary">
-      <img class="banner-img"
-        src="//img1.qunarzz.com/sight/p0/201309/24/977fea7b3c5cd758c8d65eac.jpg_600x330_0f80adad.jpg"/>
+      <img
+        class="banner-img"
+        :src="this.bannerImg"
+      />
         <div class="banner-info">
           <div class="banner-info-title">
-            成都熊猫基地(AAAA景区)
+            {{this.sightName}}
           </div>
           <div class="banner-info-number">
             <span class="iconfont">&#xe6e6;</span>
@@ -14,7 +16,7 @@
         </div>
     </div>
     <CommonGallary
-      :imgs="imgs"
+      :gallaryImgs="gallaryImgs"
       v-show="swiperShow"
       @hideGallary = "hideGallary"
     />
@@ -28,13 +30,13 @@ export default {
   components: {
     CommonGallary
   },
+  props: {
+    sightName: String,
+    bannerImg: String,
+    gallaryImgs: Array
+  },
   data () {
     return {
-      imgs: [
-        '//img1.qunarzz.com/sight/p0/201309/24/977fea7b3c5cd758c8d65eac.jpg_600x330_0f80adad.jpg',
-        '//img1.qunarzz.com/sight/p0/201309/24/977fea7b3c5cd758c8d65eac.jpg_600x330_0f80adad.jpg',
-        '//img1.qunarzz.com/sight/p0/201309/24/977fea7b3c5cd758c8d65eac.jpg_600x330_0f80adad.jpg'
-      ],
       swiperShow: false
     }
   },
